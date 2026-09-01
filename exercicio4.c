@@ -1,15 +1,24 @@
-#include <stdio.h>
-#include <locale.h>
+#include<stdio.h>
+#include<locale.h>
 
-int main()
+int main ()
 {
     setlocale(LC_CTYPE, "");
-    float peso, agua;
-    printf("Digite a massa corporal (em kg): ");
-    scanf("%f", &peso);
-    agua = peso * 35 / 1000;
-    printf("Quantidade aproximada de agua recomendada por dia: %.1f litros\n", agua);
+    float potencia, horas, consumo;
+
+    printf("Potência do equipamento (W)? ");
+    scanf("%f", &potencia);
+
+    printf("Horas de uso por dia? ");
+    scanf("%f", &horas);
+
+    consumo = (potencia * horas *30)/1000;
+
+    printf("Consumo mensal: %.2f", consumo);
 
     return 0;
+
+
+
 
 }

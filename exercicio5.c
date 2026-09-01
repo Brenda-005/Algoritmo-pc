@@ -1,20 +1,21 @@
-#include <stdio.h>
-#include <locale.h>
+#include<stdio.h>
+#include<locale.h>
 
-int main()
+int main ()
 {
     setlocale(LC_CTYPE, "");
-    float nota1, nota2, media;
+    float peso, altura, imc;
 
-    printf("Digite a primeira nota: ");
-    scanf("%f", &nota1);
+    printf(" Qual é o peso da pessoa em kg? ");
+    scanf("%f", &peso);
 
-    printf("Digite a segunda nota: ");
-    scanf("%f", &nota2);
+    printf("Qual é a altura da pessoa em metros? ");
+    scanf("%f", &altura);
 
-    media = (nota1 + nota2) / 2;
+    imc = peso / (altura*altura);
 
-    printf("Media aritmetica: %.2f\n", media);
+    printf("O Índice de Massa Corporal é %.2f kg/m2.\n", imc);
 
     return 0;
+
 }

@@ -1,15 +1,20 @@
 #include<stdio.h>
-#define PI 3.14159
 #include<locale.h>
 
-int main()
+int main ()
 {
     setlocale(LC_CTYPE, "");
 
-    float perimetro, raio;
-    printf("Qual a medida do raio? ");
-    scanf("%f", &raio);
-    perimetro = 2 * PI * raio;
-    printf("O perímetro da circunferência é:%.2f", perimetro);
+    float manha, tarde, total;
+    printf("Quantidade recebida pela manhâ? ");
+    scanf("%f", &manha);
+
+    printf("Quantidade recebida pela tarde? ");
+    scanf("%f", &tarde);
+
+    total = manha + tarde;
+    printf("Total de produtos recebidos no dia: %f", total);
+
     return 0;
+
 }
