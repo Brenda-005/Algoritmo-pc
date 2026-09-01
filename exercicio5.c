@@ -1,20 +1,46 @@
 #include<stdio.h>
 #include<locale.h>
+#include<math.h>
 
 int main ()
 {
     setlocale(LC_CTYPE, "");
-    float peso, altura, imc;
+    #include <stdio.h>
 
-    printf(" Qual é o peso da pessoa em kg? ");
-    scanf("%f", &peso);
+    char tipo;
+    int diarias;
+    float valorDiaria, total;
 
-    printf("Qual é a altura da pessoa em metros? ");
-    scanf("%f", &altura);
+    printf("Qual o tipo de hospedagem (S-D-T)? ");
+    scanf(" %c", &tipo);
 
-    imc = peso / (altura*altura);
+    printf("Qual a quantidade de diarias? ");
+    scanf("%d", &diarias);
 
-    printf("O Índice de Massa Corporal é %.2f kg/m2.\n", imc);
+    switch (tipo) {
+        case 'S':
+        case 's':
+            valorDiaria = 300.00;
+            break;
+
+        case 'D':
+        case 'd':
+            valorDiaria = 450.00;
+            break;
+
+        case 'T':
+        case 't':
+            valorDiaria = 500.00;
+            break;
+
+        default:
+            printf("Tipo invalido!!!\n");
+            return 0;
+    }
+
+    total = valorDiaria * diarias;
+
+    printf("Valor total a pagar: R$ %.2f\n", total);
 
     return 0;
 

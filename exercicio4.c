@@ -1,24 +1,39 @@
 #include<stdio.h>
 #include<locale.h>
+#include<math.h>
 
 int main ()
 {
     setlocale(LC_CTYPE, "");
-    float potencia, horas, consumo;
+    float peso, altura, imc;
 
-    printf("Potência do equipamento (W)? ");
-    scanf("%f", &potencia);
+    printf("Digite seu peso em kg: " );
+    scanf("%f", &peso);
 
-    printf("Horas de uso por dia? ");
-    scanf("%f", &horas);
+    printf("Digite sua altura em metros: ");
+    scanf("%f", &altura);
 
-    consumo = (potencia * horas *30)/1000;
+    imc = peso / (altura * altura);
 
-    printf("Consumo mensal: %.2f", consumo);
+    printf("Seu imc é: %.2f\n", imc);
+
+    if (imc < 20.0){
+        printf("Você está na categoria Abaixo do peso.");
+    }
+    else if (imc < 25.0){
+        printf("Você está na categoria Peso normal.");
+    }
+    else if (imc < 30.0){
+        printf("Você está na categoria Sobrepeso.");
+    }
+    else if (imc < 40.0)
+    {
+        printf("Você está na categoria Obeso.");
+    }
+    else{
+        printf("Você está na categoria Peso morbido.");
+    }
 
     return 0;
-
-
-
 
 }

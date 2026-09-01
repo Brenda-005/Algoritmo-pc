@@ -1,25 +1,26 @@
-#include <stdio.h>
+#include<stdio.h>
 #include<locale.h>
+#include<math.h>
 
-int main() {
-
+int main ()
+{
     setlocale(LC_CTYPE, "");
-    int primeiro, segundo;
-    int soma, subtracao, multiplicacao;
+    float media, frequencia;
 
-    printf("Digite o primeiro número: ");
-    scanf("%d", &primeiro);
+    printf("Qual é a média do aluno? ");
+    scanf("%f", &media);
 
-    printf("Digite o segundo número: ");
-    scanf("%d", &segundo);
+    printf("Qual a frequência do aluno? ");
+    scanf("%f", &frequencia);
 
-    soma = primeiro + segundo;
-    subtracao = primeiro - segundo;
-    multiplicacao = primeiro * segundo;
+    if(frequencia < 75){
+        printf("Reprovado por falta!!\n");
+    } else if (media < 6){
+        printf("Reprovado por nota!\n");
+    }
+    else {
+        printf("Aprovado!!");
 
-    printf("Soma: %d\n", soma);
-    printf("Subtração: %d\n", subtracao);
-    printf("Multiplicação: %d\n", multiplicacao);
-
+    }
     return 0;
 }

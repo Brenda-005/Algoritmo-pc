@@ -1,21 +1,25 @@
 #include<stdio.h>
 #include<locale.h>
+#include<math.h>
 
 int main ()
 {
     setlocale(LC_CTYPE, "");
-    int hora, minutos, total;
+    int nota1, nota2, media;
 
-    printf("Hora? ");
-    scanf("%d", &hora);
+    printf("Digite a primeira nota: ");
+    scanf("%d", &nota1);
 
-    printf("Minutos? ");
-    scanf("%d", &minutos);
+    printf("Digite a segunda nota: ");
+    scanf("%d", &nota2);
 
-    total = (hora * 60) + minutos;
-    printf("Já se passaram %d minutos desde o início do dia.", total);
+   media = (nota1 + nota2)/2;
 
+   if (media >= 6){
+    printf("Parabéns! Você foi aprovado com media: %d", media);
+   } else {
+    printf("Você foi reprovado!");
+   }
 
     return 0;
-
 }

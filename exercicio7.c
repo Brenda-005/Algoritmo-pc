@@ -1,26 +1,39 @@
-#include <stdio.h>
+#include<stdio.h>
 #include<locale.h>
-#include <math.h>
+#include<math.h>
 
-int main() {
-
+int main ()
+{
     setlocale(LC_CTYPE, "");
-    float primeiro, segundo, terceiro, quarto, media;
+    char tipo;
+    float nota1, nota2, media;
 
-    printf("Digite o primeiro valor: ");
-    scanf("%f", &primeiro);
+    printf("Tipo de media (A - P)? ");
+    scanf(" %c", &tipo);
 
-    printf("Digite o segundo valor: ");
-    scanf("%f", &segundo);
+    printf("Digite a primeira nota: ");
+    scanf("%f", &nota1);
 
-    printf("Digite o terceiro valor: ");
-    scanf("%f", &terceiro);
+    printf("Digite a segunda nota: ");
+    scanf("%f", &nota2);
 
-    printf("Digite o quarto valor: ");
-    scanf("%f", &quarto);
+    switch (tipo) {
+        case 'A':
+        case 'a':
+            media = (nota1 + nota2) / 2;
+            break;
 
-    media = (primeiro + segundo + terceiro + quarto)/4;
-    printf("A média aritmética é %.2f", media);
+        case 'P':
+        case 'p':
+            media = (nota1 * 3 + nota2 * 7) / 10;
+            break;
+
+        default:
+            printf("Tipo de media invalido!!!\n");
+            return 0;
+    }
+
+    printf("Media calculada: %.1f\n", media);
 
     return 0;
 }

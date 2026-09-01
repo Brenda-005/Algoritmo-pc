@@ -1,35 +1,46 @@
-#include <stdio.h>
+#include<stdio.h>
 #include<locale.h>
-#include <math.h>
+#include<math.h>
 
-int main() {
-
+int main ()
+{
     setlocale(LC_CTYPE, "");
-    float largura;
-    float comprimento;
-    float valorCaixa;
-    float area;
-    int caixas;
-    float custoTotal;
+    float valorCompra, taxa, totalFinanciado, valorParcela;
+    int parcelas;
 
-    printf("Qual e a largura da area (em metros)? ");
-    scanf("%f", &largura);
+    printf("Digite o valor da compra: R$ ");
+    scanf("%f", &valorCompra);
 
-    printf("Qual e o comprimento da area em metros? ");
-    scanf("%f", &comprimento);
+    printf("Digite a quantidade de parcelas (2, 4, 6 ou 8): ");
+    scanf("%d", &parcelas);
 
-    printf("Qual e o valor de cada caixa? ");
-    scanf("%f", &valorCaixa);
+    switch (parcelas) {
+        case 2:
+            taxa = 3;
+            break;
 
-    area = largura * comprimento;
+        case 4:
+            taxa = 7;
+            break;
 
-    caixas = (int)ceil(area / 2.5);
+        case 6:
+            taxa = 9;
+            break;
 
-    custoTotal = caixas * valorCaixa;
+        case 8:
+            taxa = 12;
+            break;
 
-    printf("Area total a ser revestida: %.2f m2\n", area);
-    printf("Quantidade de caixas necessarias: %d\n", caixas);
-    printf("Custo total da compra: R$ %.2f\n", custoTotal);
+        default:
+            printf("Quantidade de parcelas invalida!!!\n");
+            return 0;
+    }
+
+    totalFinanciado = valorCompra + (valorCompra * taxa / 100);
+    valorParcela = totalFinanciado / parcelas;
+
+    printf("\nValor total financiado: R$ %.2f\n", totalFinanciado);
+    printf("Valor de cada parcela: R$ %.2f\n", valorParcela);
 
     return 0;
 }
