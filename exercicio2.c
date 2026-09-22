@@ -1,25 +1,17 @@
 #include<stdio.h>
 #include<locale.h>
-#include<math.h>
 
-int main ()
+int main()
 {
-    setlocale(LC_CTYPE, "");
-    int nota1, nota2, media;
-
-    printf("Digite a primeira nota: ");
-    scanf("%d", &nota1);
-
-    printf("Digite a segunda nota: ");
-    scanf("%d", &nota2);
-
-   media = (nota1 + nota2)/2;
-
-   if (media >= 6){
-    printf("Parabéns! Você foi aprovado com media: %d", media);
-   } else {
-    printf("Você foi reprovado!");
-   }
-
-    return 0;
+     setlocale(LC_CTYPE, "");
+     float area, perimetro, comprimento, largura;
+     printf("Qual o comprimento do jardim? ");
+     scanf("%f", &comprimento);
+     printf("Qual a largura do jardim? ");
+     scanf("%f", &largura);
+     perimetro = 2 * (comprimento + largura);
+     area = comprimento * largura;
+     printf("Perímetro do jardim: %.2f", perimetro);
+     printf("Área do jardim: %.2f", area);
+     return 0;
 }
