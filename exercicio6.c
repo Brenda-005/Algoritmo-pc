@@ -1,46 +1,58 @@
-#include<stdio.h>
+#include <stdio.h>
 #include<locale.h>
-#include<math.h>
 
-int main ()
-{
+int main() {
+
     setlocale(LC_CTYPE, "");
-    float valorCompra, taxa, totalFinanciado, valorParcela;
-    int parcelas;
+    int opcao;
+    float total = 0;
 
-    printf("Digite o valor da compra: R$ ");
-    scanf("%f", &valorCompra);
+    do {
+        printf("\nCafeteria Analia\n\n");
+        printf("[1] X-Burger (R$ 18.90)\n");
+        printf("[2] Batata frita (R$ 9.50)\n");
+        printf("[3] Suco (R$ 10.00)\n");
+        printf("[4] Pudim (R$ 12.00)\n");
+        printf("[0] Finalizar compra\n");
 
-    printf("Digite a quantidade de parcelas (2, 4, 6 ou 8): ");
-    scanf("%d", &parcelas);
+        printf("\nDigite uma opcao: ");
+        scanf("%d", &opcao);
 
-    switch (parcelas) {
-        case 2:
-            taxa = 3;
-            break;
+        switch (opcao) {
+            case 1:
+                total = total + 18.90;
+                printf("Produto adicionado!\n");
+                printf("Subtotal: R$ %.2f\n", total);
+                break;
 
-        case 4:
-            taxa = 7;
-            break;
+            case 2:
+                total = total + 9.50;
+                printf("Produto adicionado!\n");
+                printf("Subtotal: R$ %.2f\n", total);
+                break;
 
-        case 6:
-            taxa = 9;
-            break;
+            case 3:
+                total = total + 10.00;
+                printf("Produto adicionado!\n");
+                printf("Subtotal: R$ %.2f\n", total);
+                break;
 
-        case 8:
-            taxa = 12;
-            break;
+            case 4:
+                total = total + 12.00;
+                printf("Produto adicionado!\n");
+                printf("Subtotal: R$ %.2f\n", total);
+                break;
 
-        default:
-            printf("Quantidade de parcelas invalida!!!\n");
-            return 0;
-    }
+            case 0:
+                printf("\nCompra finalizada!\n");
+                printf("Valor total: R$ %.2f\n", total);
+                break;
 
-    totalFinanciado = valorCompra + (valorCompra * taxa / 100);
-    valorParcela = totalFinanciado / parcelas;
+            default:
+                printf("Codigo invalido! Tente novamente.\n");
+        }
 
-    printf("\nValor total financiado: R$ %.2f\n", totalFinanciado);
-    printf("Valor de cada parcela: R$ %.2f\n", valorParcela);
+    } while (opcao != 0);
 
     return 0;
 }
