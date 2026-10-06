@@ -1,30 +1,19 @@
 #include <stdio.h>
-#include<locale.h>
+#include <locale.h>
+#define TAM 5
 
-int main() {
+int main()
+{
+   setlocale(LC_CTYPE, "");
+   float salarios[TAM];
+   int i;
 
-    setlocale(LC_CTYPE, "");
-    char cpf[12];
-    float preco, total = 0;
-
-    // Leitura do CPF
-    printf("CPF: ");
-    scanf("%11s", cpf);
-
-    // Leitura dos preços
-    do {
-        printf("Preco: ");
-        scanf("%f", &preco);
-
-        if (preco != 0) {
-            total += preco;
-        }
-
-    } while (preco != 0);
-
-    // Exibição do resultado
-    printf("CPF: %s\n", cpf);
-    printf("Total da compra: R$ %.2f\n", total);
-
-    return 0;
+   for(i=0; i<TAM; I++){
+        printf("Digite o salário do funcionário %d: ", (i + 1));
+        scanf("%f", &salarios[i]);
+   }
+   for(i=0; i < TAM; i++){
+        printf("Salário do funcionário %d: %.2f\n", (i+1), salarios[i]);
+   }
+   return 0;
 }

@@ -1,58 +1,56 @@
 #include <stdio.h>
-#include<locale.h>
+#include <locale.h>
+#include <locale.h>
+#define TAM 7
 
-int main() {
+int main()
+{
+    setlocale(LC_ALL, "");
+    float temperaturas[TAM];
+    float soma = 0, media;
+    float maior, menor;
+    int i, acimaMedia = 0;
 
-    setlocale(LC_CTYPE, "");
-    int opcao;
-    float total = 0;
+    // Leitura das temperaturas
+    for (i = 0; i < TAM; i++)
+    {
+        printf("Digite a temperatura do dia %d: ", i + 1);
+        scanf("%f", &temperaturas[i]);
 
-    do {
-        printf("\nCafeteria Analia\n\n");
-        printf("[1] X-Burger (R$ 18.90)\n");
-        printf("[2] Batata frita (R$ 9.50)\n");
-        printf("[3] Suco (R$ 10.00)\n");
-        printf("[4] Pudim (R$ 12.00)\n");
-        printf("[0] Finalizar compra\n");
+        soma += temperaturas[i];
+    }
 
-        printf("\nDigite uma opcao: ");
-        scanf("%d", &opcao);
+    // Calcula a média
+    media = soma / TAM;
 
-        switch (opcao) {
-            case 1:
-                total = total + 18.90;
-                printf("Produto adicionado!\n");
-                printf("Subtotal: R$ %.2f\n", total);
-                break;
+    // Inicializa maior e menor
+    maior = temperaturas[0];
+    menor = temperaturas[0];
 
-            case 2:
-                total = total + 9.50;
-                printf("Produto adicionado!\n");
-                printf("Subtotal: R$ %.2f\n", total);
-                break;
-
-            case 3:
-                total = total + 10.00;
-                printf("Produto adicionado!\n");
-                printf("Subtotal: R$ %.2f\n", total);
-                break;
-
-            case 4:
-                total = total + 12.00;
-                printf("Produto adicionado!\n");
-                printf("Subtotal: R$ %.2f\n", total);
-                break;
-
-            case 0:
-                printf("\nCompra finalizada!\n");
-                printf("Valor total: R$ %.2f\n", total);
-                break;
-
-            default:
-                printf("Codigo invalido! Tente novamente.\n");
+    // Procura maior, menor e dias acima da média
+    for (i = 0; i < TAM; i++)
+    {
+        if (temperaturas[i] > maior)
+        {
+            maior = temperaturas[i];
         }
 
-    } while (opcao != 0);
+        if (temperaturas[i] < menor)
+        {
+            menor = temperaturas[i];
+        }
+
+        if (temperaturas[i] > media)
+        {
+            acimaMedia++;
+        }
+    }
+
+    // Exibe os resultados
+    printf("\nMédia: %.2f °C\n", media);
+    printf("Maior temperatura: %.2f °C\n", maior);
+    printf("Menor temperatura: %.2f °C\n", menor);
+    printf("Dias acima da média: %d\n", acimaMedia);
 
     return 0;
 }

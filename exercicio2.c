@@ -1,27 +1,40 @@
 #include <stdio.h>
-#include<locale.h>
+#include <locale.h>
+#define TAM 8
 
-int main() {
-
+int main()
+{
     setlocale(LC_CTYPE, "");
-    float nota, soma = 0, media, maior;
 
-    for (int i = 1; i <= 5; i++) {
-        printf("Digite a nota do %dº estudante: ", i);
-        scanf("%f", &nota);
+    int i, contador = 0;
+    float valores[TAM];
+    float soma = 0, media;
 
-        soma += nota;
+    // Leitura dos 8 valores
+    for(i = 0; i < TAM; i++)
+    {
+        printf("Digite o %dº valor: ", i + 1);
+        scanf("%f", &valores[i]);
 
-        // Na primeira nota, ela será considerada a maior
-        if (i == 1 || nota > maior) {
-            maior = nota;
+        soma += valores[i];
+    }
+
+    // Calcula a média
+    media = soma / TAM;
+
+    // Conta quantos valores estão acima da média
+    for(i = 0; i < TAM; i++)
+    {
+        if(valores[i] > media)
+        {
+            contador++;
         }
     }
 
-    media = soma / 5;
-
-    printf("Media da turma: %.2f\n", media);
-    printf("Maior nota: %.2f\n", maior);
+    // Exibe os resultados
+    printf("\nMédia: %.2f\n", media);
+    printf("Valores acima da média: %d\n", contador);
 
     return 0;
 }
+
