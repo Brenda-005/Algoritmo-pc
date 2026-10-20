@@ -1,40 +1,33 @@
 #include <stdio.h>
 #include <locale.h>
-#define TAM 8
 
-int main()
-{
+int main() {
+
     setlocale(LC_CTYPE, "");
+    int qtd_registros, i;
+    char dia[20];
+    float consumo;
 
-    int i, contador = 0;
-    float valores[TAM];
-    float soma = 0, media;
+    // O modo "a" (append) é usado para não apagar os registos anteriores
+    FILE *arquivo = fopen("consumo.txt", "a");
 
-    // Leitura dos 8 valores
-    for(i = 0; i < TAM; i++)
-    {
-        printf("Digite o %dº valor: ", i + 1);
-        scanf("%f", &valores[i]);
-
-        soma += valores[i];
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o ficheiro!\n");
+        return 1;
     }
 
-    // Calcula a média
-    media = soma / TAM;
+    printf("Digite a quantidade de registros: ");
+    scanf("%d", &qtd_registros);
 
-    // Conta quantos valores estão acima da média
-    for(i = 0; i < TAM; i++)
-    {
-        if(valores[i] > media)
-        {
-            contador++;
-        }
+    for (i = 0; i < qtd_registros; i++) {
+        printf("Dia: ");
+        scanf("%s", dia);
+        printf("Consumo: ");
+        scanf("%f", &consumo);
+
+        fprintf(arquivo, "%s %.2f\n", dia, consumo);
     }
 
-    // Exibe os resultados
-    printf("\nMédia: %.2f\n", media);
-    printf("Valores acima da média: %d\n", contador);
-
+    fclose(arquivo);
     return 0;
 }
-

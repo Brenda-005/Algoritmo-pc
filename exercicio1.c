@@ -1,19 +1,27 @@
 #include <stdio.h>
 #include <locale.h>
-#define TAM 5
 
-int main()
-{
-   setlocale(LC_CTYPE, "");
-   float salarios[TAM];
-   int i;
+int main() {
 
-   for(i=0; i<TAM; I++){
-        printf("Digite o salário do funcionário %d: ", (i + 1));
-        scanf("%f", &salarios[i]);
-   }
-   for(i=0; i < TAM; i++){
-        printf("Salário do funcionário %d: %.2f\n", (i+1), salarios[i]);
-   }
-   return 0;
+    setlocale(LC_CTYPE, "");
+    int numero, i;
+    // Abre o ficheiro em modo "w" para reescrever/criar uma nova tabuada
+    FILE *arquivo = fopen("tabuada.txt", "w");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o ficheiro.\n");
+        return 1;
+    }
+
+    printf("Digite um numero inteiro: ");
+    scanf("%d", &numero);
+
+    for (i = 0; i <= 10; i++) {
+        fprintf(arquivo, "%d * %d = %d\n", numero, i, numero * i);
+    }
+
+    fclose(arquivo);
+    printf("Tabuada guardada com sucesso!\n");
+
+    return 0;
 }

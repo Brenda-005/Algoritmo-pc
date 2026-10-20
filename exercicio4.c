@@ -1,45 +1,42 @@
 #include <stdio.h>
 #include <locale.h>
-#define PRODUTOS 3
-#define DIAS 4
 
-int main()
-{
+int main() {
+
     setlocale(LC_CTYPE, "");
-    int vendas[PRODUTOS][DIAS];
-    int i, j;
-    int totalProduto;
-    int totalGeral = 0;
+    char rgm[12];
+    float nota, soma = 0.0, maior = -1.0;
+    int qtd_estudantes = 0, aprovados = 0;
 
-    // Leitura das vendas
-    for(i = 0; i < PRODUTOS; i++)
-    {
-        for(j = 0; j < DIAS; j++)
-        {
-            printf("Digite a quantidade do %dº produto no %dº dia: ",
-                   i + 1, j + 1);
+    FILE *arquivo = fopen("notas.txt", "r");
 
-            scanf("%d", &vendas[i][j]);
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o ficheiro de notas.\n");
+        return 1;
+    }
+
+    // Lê os campos de acordo com a formatação (RGM como string e nota como float)
+    while (fscanf(arquivo, "%11s %f", rgm, &nota) == 2) {
+        qtd_estudantes++;
+        soma += nota;
+
+        if (nota > maior) {
+            maior = nota;
+        }
+
+        if (nota >= 6.0) {
+            aprovados++;
         }
     }
 
-    // Calcula o total de cada produto
-    for(i = 0; i < PRODUTOS; i++)
-    {
-        totalProduto = 0;
+    fclose(arquivo);
 
-        for(j = 0; j < DIAS; j++)
-        {
-            totalProduto += vendas[i][j];
-        }
-
-        printf("Produto %d: %d unidades\n", i + 1, totalProduto);
-
-        totalGeral += totalProduto;
+    if (qtd_estudantes > 0) {
+        printf("Estudantes: %d\n", qtd_estudantes);
+        printf("Media da turma: %.2f\n", soma / qtd_estudantes);
+        printf("Maior nota: %.2f\n", maior);
+        printf("Quantidade de alunos aprovados: %d\n", aprovados);
     }
-
-    // Exibe o total geral
-    printf("Total geral: %d unidades\n", totalGeral);
 
     return 0;
 }

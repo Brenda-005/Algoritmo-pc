@@ -1,37 +1,23 @@
-#include<stdio.h>
-#include<locale.h>
-#define TAM 10
+#include <stdio.h>
+#include <locale.h>
 
-int main ()
-{
+int main() {
+
     setlocale(LC_CTYPE, "");
-    int i, contador=0;
-    float salarios[TAM];
-    float soma=0, media, maior_salario;
+    char linha[100];
+    // O modo "r" (read) é utilizado para leitura do ficheiro
+    FILE *arquivo = fopen("tabuada.txt", "r");
 
-    for(i=0; i<TAM; i++){
-        printf("Digite o salário do funcinário %d: ", (i+i));
-        scanf("%f", &salarios[i]);
-        soma += salarios[i];
-    }
-    media = soma/TAM;
-    for(i=0; i<TAM; i++){
-        if(salarios[i] > media)
-            contador++; //conta os salários acima da média
-        if(salarios[i]>maior_salario){
-                maior_salario+salarios[i]; //indice do maior salário
-                achei_maior = i; //indice do maior salário
-        }
-
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o ficheiro. Certifique-se que foi criado.\n");
+        return 1;
     }
 
-    printf("Média dos salários: R$ %.2f\n", media;)
-    printf("Quantidade de salários acima da média: %d\n", contador);
-    printf("Maior salário: R$ %.2f\n", maior_salario);
+    // fgets() lê a linha do ficheiro até ao limite de caracteres ou nova linha
+    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
+        printf("%s", linha);
+    }
 
-
+    fclose(arquivo);
     return 0;
-
-
-
 }
